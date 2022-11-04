@@ -21,20 +21,20 @@ class SettingView extends GetView<SettingController> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('设置'),
+        title: Text('setting.title'.tr),
         centerTitle: true,
       ),
       body: Column(
         // 左对齐
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("基本设置", style: Get.textTheme.titleLarge),
+          Text('setting.basic'.tr, style: Get.textTheme.titleLarge),
           const SizedBox(height: 10),
           Obx(() => Card(
                   child: Column(
                 children: _buildConfigItems([
                   _ConfigItem(
-                      "主题",
+                      'setting.theme'.tr,
                       () => _getThemeName(controller.setting.value.themeMode),
                       () => DropdownButton<ThemeMode>(
                             value: controller.setting.value.themeMode,
@@ -52,8 +52,8 @@ class SettingView extends GetView<SettingController> {
                                     ))
                                 .toList(),
                           )),
-                  _ConfigItem(
-                      "下载目录", () => controller.setting.value.downloadDir, () {
+                  _ConfigItem('setting.downloadDir'.tr,
+                      () => controller.setting.value.downloadDir, () {
                     final downloadDirController = TextEditingController(
                         text: controller.setting.value.downloadDir);
                     downloadDirController.addListener(() {
@@ -70,7 +70,7 @@ class SettingView extends GetView<SettingController> {
                       showLabel: false,
                     );
                   }),
-                  _ConfigItem("连接数",
+                  _ConfigItem('setting.connections'.tr,
                       () => controller.setting.value.connections.toString(),
                       () {
                     final connectionsController = TextEditingController(
@@ -130,11 +130,11 @@ class SettingView extends GetView<SettingController> {
   String _getThemeName(ThemeMode themeMode) {
     switch (themeMode) {
       case ThemeMode.system:
-        return "跟随系统";
+        return 'setting.themeSystem'.tr;
       case ThemeMode.light:
-        return "明亮主题";
+        return 'setting.themeLight'.tr;
       case ThemeMode.dark:
-        return "暗黑主题";
+        return 'setting.themeDark'.tr;
     }
   }
 }

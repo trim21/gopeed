@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'core/libgopeed_boot.dart';
+import 'i18n/messages.dart';
 import 'routes/router.dart';
 import 'setting/setting.dart';
 import 'theme/theme.dart';
 import 'util/log_util.dart';
 import 'util/mac_secure_util.dart';
+import 'dart:ui' as ui;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,6 +26,9 @@ void main() async {
     theme: GopeedTheme.light,
     darkTheme: GopeedTheme.dark,
     themeMode: Setting.instance.themeMode,
+    translations: Messages(),
+    locale: ui.window.locale,
+    fallbackLocale: const Locale('en', 'US'),
     getPages: Routes.routes,
   ));
 }
